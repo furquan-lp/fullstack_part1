@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Header = (props) => {
   return (
@@ -6,7 +6,7 @@ const Header = (props) => {
       <h1>{props.c.name}</h1>
     </div>
   )
-}
+};
 
 const Content = (props) => {
   return (
@@ -16,7 +16,7 @@ const Content = (props) => {
       <p>{props.c.parts[2].name} {props.c.parts[2].exercises}</p>
     </div>
   )
-}
+};
 
 const Total = (props) => {
   return (
@@ -24,7 +24,7 @@ const Total = (props) => {
       <p>Number of exercises {props.c.parts[0].exercises + props.c.parts[1].exercises + props.c.parts[2].exercises}</p>
     </div>
   )
-}
+};
 
 function App() {
   const course = {
@@ -43,7 +43,7 @@ function App() {
         exercises: 14
       }
     ]
-  }
+  };
   console.log(course);
 
   return (
@@ -52,7 +52,7 @@ function App() {
       <Content c={course} />
       <Total c={course} />
     </div>
-  )
+  );
 }
 
 export default App;
