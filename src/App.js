@@ -10,7 +10,7 @@ const App = () => {
     'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.',
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients'
   ];
-  const [points, setPoints] = useState([0, 0, 0, 0, 0, 0]);
+  const [points, setPoints] = useState([0, 0, 0, 0, 0, 0, 0]); // last element stores the highest voted anecdote
   const [selected, setSelected] = useState(0);
 
   const nextAnecdote = () => {
@@ -21,6 +21,8 @@ const App = () => {
   const vote = () => {
     const pointsCopy = [...points];
     pointsCopy[selected] += 1;
+    if (pointsCopy[selected] > pointsCopy[pointsCopy[pointsCopy.length - 1]])
+      pointsCopy[pointsCopy.length - 1] = selected;
     setPoints(pointsCopy);
   };
 
@@ -28,10 +30,13 @@ const App = () => {
 
   return (
     <div>
+      <h1>Ancedote of the day</h1>
       <p>{anecdotes[selected]}</p>
       <p>has {points[selected]} votes</p>
       <button onClick={vote}>vote</button>
       <button onClick={nextAnecdote}>next anecdote</button>
+      <h1>Anecdote with most votes</h1>
+      {anecdotes[points[points.length - 1]]}
     </div>
   );
 };
